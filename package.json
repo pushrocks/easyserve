@@ -1,0 +1,26 @@
+{
+  "name": "easyserve",
+  "version": "0.0.1",
+  "description": "easily serve a project with gulp and browser-sync",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pushrocks/easyserve.git"
+  },
+  "keywords": [
+    "serve",
+    "browser-sync",
+  ],
+  "author": "Smart Coordination GmbH <office@push.rocks> (https://push.rocks)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pushrocks/easyserve/issues"
+  },
+  "homepage": "https://github.com/pushrocks/easyserve",
+  "dependencies": {
+    "browser-sync": ">= 2.9.2"
+  }
+}
