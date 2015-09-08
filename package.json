@@ -12,7 +12,7 @@
   },
   "keywords": [
     "serve",
-    "browser-sync",
+    "browser-sync"
   ],
   "author": "Smart Coordination GmbH <office@push.rocks> (https://push.rocks)",
   "license": "MIT",

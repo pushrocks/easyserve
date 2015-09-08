@@ -1,15 +1,13 @@
 /// <reference path="typings/tsd.d.ts" />
 var path, browserSync;
-
 path = require("path");
 browserSync = require("browser-sync").create();
-
-module.exports = (serveDirectory:string) => {
+module.exports = function (serveDirectory) {
     browserSync.init({
         snippetOptions: {
             rule: {
                 match: /<head>/i,
-                fn: function(snippet, match) {
+                fn: function (snippet, match) {
                     return snippet + match;
                 }
             }
