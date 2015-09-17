@@ -1,0 +1,16 @@
+language: node_js
+before_install:
+- nvm install stable
+- node -v
+- npm -v
+- npm install -g gulp
+- npm install gulp
+- npm install gulp-typescript
+deploy:
+  provider: npm
+  email: npm@smart-coordination.com
+  api_key:
+    secure: gesuhNlfI3LxcxKHu7uSMHz7xh9nHsOXHxPPg454GgctkAx93DBk4LVbt0bPHD+gfuxwe+ELc3uMXDkAqyp9k1MlDZ6amAERsMXBguvLmRDAuDkrHx9JSUw0q8/T8R3uByMUcpiWoG17WqJP/BUm1MIKxsEaV9LMANnN/De7R+SA2rHomt2JZiE5FXE+x5OYGNi7Sn4z3GtkNHG4HAbqWGD1THKx1IG4j/uZJkoNt3k2Iwzv/PuyYnAVF8FPJyhUwo93xEfZxc/7e8vnKADPuONugGqA60IumuwKv6Tg/sh/cRlptNXseoRFfPPSC8PY7cuNpg7LsWdtxjxh8KstO3LCZuOm3kAs7Ns2abG8eMyAJ6Pyiw5mXmfpkPWwcz0d11FyGlLtItfUDBwZ+v9CaKHgeSC48klYlzVHYdxhPfg/tqCDfmflqZN+HlxTl+FPXTXihQigzh6SzxEa7dzbnq1NYkMyr4VeDDpdjLG6GAElmQ8heY4htA+jfwGaz+oBz468pfw9BXOOD23pwx8cBm34MVBKX9QsSSvDZAQZUMCR9Rbkk7OhKWfINwePbluWWu1KFegMz9MifR2ZvTYVynsLjyA6DUkVmqW1EGs/pPCAkEzHzQqJj7N2mnzhVpw45YJpknzpq+GVl0Pj6x14d1XjEc3iq7rARwHudTMY8yE=
+  on:
+    tags: true
+    repo: pushrocks/easyserve

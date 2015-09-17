@@ -4,7 +4,7 @@
   "description": "easily serve a project with gulp and browser-sync",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cd ts/compile/ && gulp"
   },
   "repository": {
     "type": "git",
