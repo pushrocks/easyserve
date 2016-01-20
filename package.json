@@ -1,11 +1,11 @@
 {
   "name": "easyserve",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "easily serve a project with gulp and browser-sync",
   "main": "index.js",
   "scripts": {
     "test": "npmts",
-    "testm":"(npm test) && (node test.js)"
+    "testm": "(npm test) && (node test.js)"
   },
   "repository": {
     "type": "git",
