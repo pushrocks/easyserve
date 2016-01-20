@@ -4,7 +4,8 @@
   "description": "easily serve a project with gulp and browser-sync",
   "main": "index.js",
   "scripts": {
-    "test": "cd ts/compile/ && gulp"
+    "test": "npmts",
+    "testm":"(npm test) && (node test.js)"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,9 @@
   },
   "homepage": "https://github.com/pushrocks/easyserve",
   "dependencies": {
-    "browser-sync": ">=2.9.11"
+    "browser-sync": ">=2.11.1"
+  },
+  "devDependencies": {
+    "npmts": "^1.0.9"
   }
 }

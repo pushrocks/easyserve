@@ -4,7 +4,7 @@ var path, browserSync;
 path = require("path");
 browserSync = require("browser-sync").create();
 
-module.exports = (serveDirectory:string) => {
+module.exports = function(serveDirectory:string) {
     browserSync.init({
         snippetOptions: {
             rule: {
