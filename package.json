@@ -1,6 +1,6 @@
 {
   "name": "easyserve",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "easily serve a project with gulp and browser-sync",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
