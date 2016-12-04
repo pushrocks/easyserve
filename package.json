@@ -2,9 +2,10 @@
   "name": "easyserve",
   "version": "0.0.5",
   "description": "easily serve a project with gulp and browser-sync",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "npmts",
+    "test": "(npmts)",
     "testm": "(npm test) && (node test.js)"
   },
   "repository": {
@@ -15,16 +16,23 @@
     "serve",
     "browser-sync"
   ],
-  "author": "Smart Coordination GmbH <office@push.rocks> (https://push.rocks)",
+  "author": "Lossless GmbH <office@lossless.com> (https://lossless.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pushrocks/easyserve/issues"
   },
   "homepage": "https://github.com/pushrocks/easyserve",
   "dependencies": {
-    "browser-sync": ">=2.11.1"
+    "@types/browser-sync": "0.0.34",
+    "@types/q": "0.0.32",
+    "browser-sync": "^2.18.2",
+    "q": "^1.4.1",
+    "smartcli": "^1.0.15"
   },
   "devDependencies": {
-    "npmts": "^1.0.9"
+    "@types/should": "^8.1.30",
+    "npmts-g": "^5.2.10",
+    "should": "^11.1.1",
+    "typings-test": "^1.0.3"
   }
 }
