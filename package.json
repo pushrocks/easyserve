@@ -1,7 +1,7 @@
 {
   "name": "easyserve",
   "version": "1.0.0",
-  "description": "easily serve a project with gulp and browser-sync",
+  "description": "browser-sync in an easy to use TypeScript class",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
