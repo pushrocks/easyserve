@@ -6,7 +6,9 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "(npmts)",
-    "testm": "(npm test) && (node test.js)"
+    "testm": "(npm test) && (node test.js)",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -27,12 +29,14 @@
     "@types/q": "0.0.32",
     "browser-sync": "^2.18.2",
     "q": "^1.4.1",
-    "smartcli": "^1.0.15"
+    "smartcli": "^1.0.15",
+    "snyk": "^1.41.1"
   },
   "devDependencies": {
     "@types/should": "^8.1.30",
     "npmts-g": "^5.2.10",
     "should": "^11.1.1",
     "typings-test": "^1.0.3"
-  }
+  },
+  "snyk": true
 }
