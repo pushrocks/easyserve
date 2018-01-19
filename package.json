@@ -6,7 +6,9 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "(npmts)",
-    "testm": "(npm test) && (node test.js)"
+    "testm": "(npm test) && (node test.js)",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,8 @@
   "dependencies": {
     "@types/browser-sync": "0.0.38",
     "browser-sync": "^2.18.2",
-    "smartq": "^1.1.6"
+    "smartq": "^1.1.6",
+    "snyk": "^1.69.1"
   },
   "devDependencies": {
     "@types/node": "^9.3.0",
@@ -40,5 +43,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "snyk": true
 }
