@@ -1,6 +1,6 @@
 {
   "name": "easyserve",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "browser-sync in an easy to use TypeScript class",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
