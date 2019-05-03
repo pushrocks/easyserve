@@ -1,12 +1,12 @@
 {
-  "name": "easyserve",
+  "name": "@pushrocks/easyserve",
   "version": "1.1.1",
-  "description": "browser-sync in an easy to use TypeScript class",
+  "description": "easy serving of static files",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "(npmts)",
-    "testm": "(npm test) && (node test.js)"
+    "test": "tstest test/",
+    "build": "tsbuild"
   },
   "repository": {
     "type": "git",
@@ -23,22 +23,17 @@
   },
   "homepage": "https://github.com/pushrocks/easyserve",
   "dependencies": {
-    "@types/browser-sync": "0.0.38",
-    "browser-sync": "^2.18.2",
-    "smartq": "^1.1.6"
+    "@pushrocks/smartexpress": "^3.0.20",
+    "@pushrocks/smartpromise": "^3.0.2",
+    "@pushrocks/smartrx": "^2.0.3"
   },
   "devDependencies": {
-    "@types/node": "^9.3.0",
-    "cz-conventional-changelog": "^2.1.0",
-    "tapbundle": "^1.1.8",
-    "tslint": "^5.9.1",
-    "tslint-config-prettier": "^1.6.0",
-    "tslint-language-service": "^0.9.8",
-    "typescript": "^2.6.2"
+    "@gitzone/tsbuild": "^2.1.11",
+    "@gitzone/tstest": "^1.0.20",
+    "@pushrocks/tapbundle": "^3.0.9",
+    "@types/node": "^11.13.9",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  }
+  "private": false
 }

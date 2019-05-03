@@ -1,7 +1,15 @@
 {
   "npmci": {
-    "npmGlobalTools": [
-      "npmts"
-    ]
+    "npmAccessLevel": "public"
+  },
+  "gitzone": {
+    "module": {
+      "githost": "gitlab.com",
+      "gitscope": "pushrocks",
+      "gitrepo": "smartserve",
+      "shortDescription": "easy serving of static files",
+      "npmPackagename": "@pushrocks/smartserve",
+      "license": "MIT"
+    }
   }
 }

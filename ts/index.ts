@@ -1,53 +1,33 @@
-import * as smartq from "smartq";
-import * as path from "path";
-import * as browserSync from "browser-sync";
+import * as plugins from './easyserve.plugins';
 
-export class EasyServe {
-  bsInstance: browserSync.BrowserSyncInstance = null;
-  private bsStartedDeferred: smartq.Deferred<any> = smartq.defer();
-  bsStarted = this.bsStartedDeferred.promise;
-  servingDirectory: string;
-  servingPort: number;
+export interface IEasyServerConstructorOptions {
+  serveDir: string;
+  watch: boolean;
+  injectReload: boolean;
+  portArg?: number;
+}
 
-  constructor(servingDirectoryArg: string, portArg: number) {
-    this.servingDirectory = servingDirectoryArg;
-    this.servingPort = portArg;
+export class SmartServe {
+  public options: IEasyServerConstructorOptions;
+  smartexpressInstance: plugins.smartexpress.Server;
+
+  constructor(optionsArg: IEasyServerConstructorOptions) {
+    const standardOptions: IEasyServerConstructorOptions = {
+      injectReload: true,
+      portArg: 3000,
+      serveDir: process.cwd(),
+      watch: true
+    };
+    this.options = {
+      ...standardOptions,
+      ...optionsArg
+    };
   }
 
   /**
    * inits and starts browserSync
    */
-  async start() {
-    let done = smartq.defer();
-    if (!this.bsInstance) {
-      this.bsInstance = browserSync.create();
-      this.bsInstance.init(
-        {
-          snippetOptions: {
-            rule: {
-              match: /<head>/i,
-              fn: function(snippet, match) {
-                return snippet + match;
-              }
-            }
-          },
-          server: {
-            baseDir: this.servingDirectory
-          },
-          port: this.servingPort
-        },
-        () => {
-          done.resolve();
-          this.bsStartedDeferred.resolve();
-        }
-      );
-    }
-    return await done.promise;
-  }
+  async start() {}
 
-  async stop() {
-    await this.bsStarted;
-    this.bsInstance.pause();
-    this.bsInstance.exit();
-  }
+  async stop() {}
 }

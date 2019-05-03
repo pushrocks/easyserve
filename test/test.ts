@@ -1,21 +1,26 @@
-import { tap, expect } from 'tapbundle'
-import * as path from 'path'
+import { tap, expect } from '@pushrocks/tapbundle';
+import * as path from 'path';
 
-import { EasyServe } from '../ts/index'
+import { SmartServe } from '../ts/index';
 
-let testEasyServe: EasyServe
+let testSmartServe: SmartServe;
 tap.test('should create a valid instance of EasyServe', async () => {
-    testEasyServe = new EasyServe(__dirname, 8080)
-    expect(testEasyServe).to.be.instanceOf(EasyServe)
-})
+  testSmartServe = new SmartServe({
+    injectReload: true,
+    portArg: 3000,
+    serveDir: path.join(__dirname, './index.html'),
+    watch: true
+  });
+  expect(testSmartServe).to.be.instanceOf(SmartServe);
+});
 
 tap.test('should start to serve files', async () => {
-    await testEasyServe.start()
-})
+  await testSmartServe.start();
+});
 
-tap.test('should stop to serve files ', async (tools) => {
-    await tools.delayFor(5000)
-    await testEasyServe.stop()
-})
+tap.test('should stop to serve files ', async tools => {
+  await tools.delayFor(5000);
+  await testSmartServe.stop();
+});
 
-tap.start()
+tap.start();
