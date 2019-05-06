@@ -5,8 +5,9 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "npm run build && tstest test/",
-    "build": "tsbuild && tsbundle"
+    "test": "npm run build && tstest test/ && npm run cleanBuild",
+    "build": "tsbuild && tsbundle",
+    "cleanBuild": "rm -r dist/"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,7 @@
   },
   "devDependencies": {
     "@gitzone/tsbuild": "^2.1.11",
-    "@gitzone/tsbundle": "^1.0.20",
+    "@gitzone/tsbundle": "^1.0.21",
     "@gitzone/tstest": "^1.0.20",
     "@pushrocks/tapbundle": "^3.0.9",
     "@types/node": "^12.0.0",
