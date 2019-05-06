@@ -1,20 +1,23 @@
-import * as plugins from './easyserve.plugins';
+import * as plugins from './smartserve.plugins';
+
+import { Watcher } from './smartserve.classes.watcher';
 
 export interface IEasyServerConstructorOptions {
   serveDir: string;
   watch: boolean;
   injectReload: boolean;
-  portArg?: number;
+  port?: number;
 }
 
 export class SmartServe {
   public options: IEasyServerConstructorOptions;
   smartexpressInstance: plugins.smartexpress.Server;
+  watcher: Watcher;
 
   constructor(optionsArg: IEasyServerConstructorOptions) {
     const standardOptions: IEasyServerConstructorOptions = {
       injectReload: true,
-      portArg: 3000,
+      port: 3000,
       serveDir: process.cwd(),
       watch: true
     };
@@ -25,9 +28,23 @@ export class SmartServe {
   }
 
   /**
-   * inits and starts browserSync
+   * inits and starts the server
    */
-  async start() {}
+  public async start() {
+    this.smartexpressInstance = new plugins.smartexpress.Server({
+      port: this.options.port,
+      forceSsl: false,
+      cors: true
+    });
 
-  async stop() {}
+    this.smartexpressInstance.addRoute(
+      '/*',
+      new plugins.smartexpress.HandlerStatic(this.options.serveDir)
+    );
+    await this.smartexpressInstance.start();
+  }
+
+  public async stop() {
+    await this.smartexpressInstance.stop();
+  }
 }
