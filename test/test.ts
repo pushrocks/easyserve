@@ -16,11 +16,11 @@ tap.test('should create a valid instance of EasyServe', async () => {
 
 tap.test('should start to serve files', async tools => {
   await testSmartServe.start();
-  await tools.delayFor(1000);
+  await tools.delayFor(10000);
 });
 
 tap.test('should stop to serve files ', async tools => {
-  await tools.delayFor(5000);
+  await tools.delayFor(1000);
   await testSmartServe.stop();
 });
 
