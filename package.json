@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/pushrocks/easyserve",
   "dependencies": {
-    "@pushrocks/smartchok": "^1.0.18",
     "@pushrocks/smartdelay": "^2.0.3",
     "@pushrocks/smartexpress": "^3.0.21",
     "@pushrocks/smartfile": "^7.0.2",

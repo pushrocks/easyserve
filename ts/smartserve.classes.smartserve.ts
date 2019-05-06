@@ -1,8 +1,6 @@
 import * as plugins from './smartserve.plugins';
 import * as paths from './smartserve.paths';
 
-import { Watcher } from './smartserve.classes.watcher';
-
 export interface IEasyServerConstructorOptions {
   serveDir: string;
   watch: boolean;
@@ -13,7 +11,6 @@ export interface IEasyServerConstructorOptions {
 export class SmartServe {
   public options: IEasyServerConstructorOptions;
   smartexpressInstance: plugins.smartexpress.Server;
-  watcher: Watcher;
 
   public waitForReloadDeferred = plugins.smartpromise.defer();
 
