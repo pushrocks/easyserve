@@ -1,5 +1,5 @@
 {
-  "name": "@pushrocks/easyserve",
+  "name": "@pushrocks/smartserve",
   "version": "1.1.6",
   "description": "easy serving of static files",
   "main": "dist/index.js",
