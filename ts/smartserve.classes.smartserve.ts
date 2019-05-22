@@ -9,6 +9,10 @@ export interface IEasyServerConstructorOptions {
 }
 
 export class SmartServe {
+  // static
+  public static getHandler() {};
+
+  // instance
   public options: IEasyServerConstructorOptions;
   smartexpressInstance: plugins.smartexpress.Server;
 
