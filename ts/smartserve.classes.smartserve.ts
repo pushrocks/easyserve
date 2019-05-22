@@ -51,9 +51,6 @@ export class SmartServe {
           break;
         case 'reloadcheck':
           console.log('got request for reloadcheck');
-          setTimeout(() => {
-            this.waitForReloadDeferred.resolve();
-          }, 5000);
           res.setHeader('Content-Type', 'text/plain');
           res.status(200);
           
@@ -96,7 +93,15 @@ export class SmartServe {
     plugins.smartopen.openUrl('http://testing.git.zone:3000');
   }
 
+  /**
+   * reloads the page
+   */
+  async reload () {
+    this.waitForReloadDeferred.resolve();
+  }
+
   public async stop() {
     await this.smartexpressInstance.stop();
+    this.waitForReloadDeferred.resolve();
   }
 }
