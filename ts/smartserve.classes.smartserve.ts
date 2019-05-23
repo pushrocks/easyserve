@@ -2,6 +2,7 @@ import * as plugins from './smartserve.plugins';
 import * as paths from './smartserve.paths';
 
 export interface IEasyServerConstructorOptions {
+  expressInstance?: plugins.smartexpress.Server;
   serveDir: string;
   watch: boolean;
   injectReload: boolean;
@@ -10,7 +11,9 @@ export interface IEasyServerConstructorOptions {
 
 export class SmartServe {
   // static
-  public static getHandler() {};
+  public static instrumentExpressInstance(optionsArg: IEasyServerConstructorOptions) {
+
+  };
 
   // instance
   public options: IEasyServerConstructorOptions;
@@ -35,7 +38,7 @@ export class SmartServe {
    * inits and starts the server
    */
   public async start() {
-    this.smartexpressInstance = new plugins.smartexpress.Server({
+    this.smartexpressInstance = this.options.expressInstance || new plugins.smartexpress.Server({
       port: this.options.port,
       forceSsl: false,
       cors: true
