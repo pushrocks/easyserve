@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/pushrocks/easyserve",
   "dependencies": {
+    "@pushrocks/smartchok": "^1.0.18",
     "@pushrocks/smartdelay": "^2.0.3",
     "@pushrocks/smartexpress": "^3.0.21",
     "@pushrocks/smartfile": "^7.0.2",
@@ -36,7 +37,7 @@
   "devDependencies": {
     "@gitzone/tsbuild": "^2.1.11",
     "@gitzone/tsbundle": "^1.0.22",
-    "@gitzone/tstest": "^1.0.20",
+    "@gitzone/tstest": "^1.0.21",
     "@pushrocks/tapbundle": "^3.0.9",
     "@types/node": "^12.0.2",
     "tslint": "^5.16.0",

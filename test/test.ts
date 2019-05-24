@@ -4,7 +4,7 @@ import * as path from 'path';
 import { SmartServe } from '../ts/index';
 
 let testSmartServe: SmartServe;
-tap.test('should create a valid instance of EasyServe', async () => {
+tap.test('should create a valid instance of SmartServe', async () => {
   testSmartServe = new SmartServe({
     injectReload: true,
     port: 3000,
