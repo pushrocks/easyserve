@@ -1,0 +1,14 @@
+.nogit/
+
+# artifacts
+coverage/
+public/
+pages/
+
+# installs
+node_modules/
+
+# caches
+.yarn/
+.cache/
+.rpt2_cache
