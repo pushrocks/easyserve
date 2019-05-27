@@ -108,8 +108,10 @@ export class SmartServe {
       });
     }
 
-    await this.smartexpressInstance.start();
-    plugins.smartopen.openUrl('http://testing.git.zone:3000');
+    if (!this.options.expressInstance) {
+      await this.smartexpressInstance.start();
+      plugins.smartopen.openUrl('http://testing.git.zone:3000');
+    }
   }
 
   /**
