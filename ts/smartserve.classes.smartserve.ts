@@ -89,7 +89,7 @@ export class SmartServe {
             if (this.options.injectReload && fileStringArray.length === 2) {
               fileStringArray[0] = `${
                 fileStringArray[0]
-              }<head><script src="/smartserve/devtools"></script>`;
+              }<head><script async defer src="/smartserve/devtools"></script>`;
               fileString = fileStringArray.join('');
             } else if (this.options.injectReload) {
               console.log('Could not insert smartserve script');
