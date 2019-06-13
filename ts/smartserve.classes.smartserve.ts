@@ -55,7 +55,6 @@ export class SmartServe {
             res.setHeader('Content-Type', 'text/javascript');
             res.status(200);
             res.send(plugins.smartfile.fs.toStringSync(paths.bundlePath));
-            res.end();
             break;
           case 'reloadcheck':
             console.log('got request for reloadcheck');
