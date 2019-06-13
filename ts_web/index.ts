@@ -15,9 +15,11 @@ export class ReloadChecker {
    */
   public async start () {
     const response = await fetch('/smartserve/reloadcheck');
-    logger.log('ok', 'Reload response finished!');
     if (await response.text() === 'reload') {
+      logger.log('ok', 'triggering reload!');
       this.reload();
+    } else {
+      this.start();
     }
   }
 }

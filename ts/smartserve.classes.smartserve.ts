@@ -61,19 +61,23 @@ export class SmartServe {
             res.setHeader('Content-Type', 'text/plain');
             res.status(200);
 
-            let keepAlive = true;
-            const keepAliveFunction = async () => {
-              while (keepAlive) {
-                res.write('');
-                await plugins.smartdelay.delayFor(1000);
+            let reloaded = false;
+            let finished = false;
+            const reloadBreak = async () => {
+              await plugins.smartdelay.delayFor(1000);
+              if (!reloaded) {
+                res.end('');
+                finished = true;
               }
             };
-            keepAliveFunction();
+            reloadBreak();
             await this.waitForReloadDeferred.promise;
-            keepAlive = false;
-            console.log('send reload command!');
-            res.write('reload');
-            res.end();
+            reloaded = true;
+            if (!finished) {
+              console.log('send reload command!');
+              res.write('reload');
+              res.end();
+            }
         }
       })
     );
