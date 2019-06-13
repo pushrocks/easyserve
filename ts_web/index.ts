@@ -1,8 +1,9 @@
+import * as plugins from './smartserve_web.plugins';
 import { logger } from './smartserve_web.logger';
 logger.log('info', `SmartServe-Devtools initialized!`);
 
 export class ReloadChecker {
-  
+  public lastReload: string;
   constructor() {}
 
   public async reload () {
@@ -14,21 +15,15 @@ export class ReloadChecker {
    * starts the reload checker
    */
   public async start () {
-    const controller = new AbortController();
-    let aborted = false;
-    const response = await fetch('/smartserve/reloadcheck', {
-      signal: controller.signal
-    });
-
-    window.onbeforeunload = event => {
-      aborted = true;
-      controller.abort();
-    };
-
-    if (!aborted && await response.text() === 'reload') {
-      logger.log('ok', 'triggering reload!');
+    const response = await fetch('/smartserve/reloadcheck');
+    const responseText = await response.text();
+    let reloadJustified = false;
+    this.lastReload ? null : this.lastReload = responseText;
+    this.lastReload !== responseText ? reloadJustified = true : null;
+    if (reloadJustified) {
       this.reload();
-    } else if (!aborted && !(await response.text() === 'end')) {
+    } else {
+      await plugins.smartdelay.delayFor(1000);
       this.start();
     }
   }

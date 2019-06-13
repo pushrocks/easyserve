@@ -18,7 +18,7 @@ export class SmartServe {
   public smartexpressInstance: plugins.smartexpress.Server;
   public smartchokInstance: plugins.smartchok.Smartchok;
 
-  public waitForReloadDeferred = plugins.smartpromise.defer();
+  public lastReload: number = Date.now();
   public ended = false;
   constructor(optionsArg: IEasyServerConstructorOptions) {
     const standardOptions: IEasyServerConstructorOptions = {
@@ -54,39 +54,19 @@ export class SmartServe {
           case 'devtools':
             res.setHeader('Content-Type', 'text/javascript');
             res.status(200);
-            res.send(plugins.smartfile.fs.toStringSync(paths.bundlePath));
+            res.write(plugins.smartfile.fs.toStringSync(paths.bundlePath));
+            res.end();
             break;
           case 'reloadcheck':
             console.log('got request for reloadcheck');
             res.setHeader('Content-Type', 'text/plain');
             res.status(200);
-
-            let keepAlive = true;
-            let counter = 0
-            const keepAliveFunction = async () => {
-              while (keepAlive && !this.ended) {
-                counter++;
-                res.write('');
-                await plugins.smartdelay.delayFor(1000);
-                if (counter===10) {
-                  keepAlive = false;
-                  res.end();
-                }
-              }
-            };
-            keepAliveFunction();
-            await this.waitForReloadDeferred.promise;
-            if (!keepAlive) {
-              return;
-            }
-            keepAlive = false;
-            if (!this.ended) {
-              console.log('send reload command!');
-              res.write('reload');
+            if (this.ended) {
+              res.write('end');
               res.end();
-            } else {
-              res.end('end');
             }
+            res.write(this.lastReload.toString());
+            res.end();
         }
       })
     );
@@ -130,13 +110,11 @@ export class SmartServe {
    * reloads the page
    */
   async reload() {
-    this.waitForReloadDeferred.resolve();
-    this.waitForReloadDeferred = plugins.smartpromise.defer();
+    this.lastReload = Date.now();
   }
 
   public async stop() {
     this.ended = true;
-    this.waitForReloadDeferred.resolve();
     await this.smartexpressInstance.stop();
     await this.smartchokInstance.stop();
   }
