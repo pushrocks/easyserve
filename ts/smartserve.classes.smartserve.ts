@@ -64,6 +64,7 @@ export class SmartServe {
             if (this.ended) {
               res.write('end');
               res.end();
+              return;
             }
             res.write(this.lastReload.toString());
             res.end();
