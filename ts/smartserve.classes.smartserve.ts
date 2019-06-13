@@ -19,7 +19,7 @@ export class SmartServe {
   public smartchokInstance: plugins.smartchok.Smartchok;
 
   public waitForReloadDeferred = plugins.smartpromise.defer();
-
+  public ended = false;
   constructor(optionsArg: IEasyServerConstructorOptions) {
     const standardOptions: IEasyServerConstructorOptions = {
       injectReload: true,
@@ -63,7 +63,7 @@ export class SmartServe {
 
             let keepAlive = true;
             const keepAliveFunction = async () => {
-              while (keepAlive) {
+              while (keepAlive && !this.ended) {
                 res.write('');
                 await plugins.smartdelay.delayFor(1000);
               }
@@ -72,8 +72,12 @@ export class SmartServe {
             await this.waitForReloadDeferred.promise;
             keepAlive = false;
             console.log('send reload command!');
-            res.write('reload');
-            res.end();
+            if (!this.ended) {
+              res.write('reload');
+              res.end();
+            } else {
+              res.end('end');
+            }
         }
       })
     );
@@ -122,6 +126,7 @@ export class SmartServe {
   }
 
   public async stop() {
+    this.ended = true;
     this.waitForReloadDeferred.resolve();
     await this.smartexpressInstance.stop();
     await this.smartchokInstance.stop();

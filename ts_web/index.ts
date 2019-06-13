@@ -14,11 +14,21 @@ export class ReloadChecker {
    * starts the reload checker
    */
   public async start () {
-    const response = await fetch('/smartserve/reloadcheck');
-    if (await response.text() === 'reload') {
+    const controller = new AbortController();
+    let aborted = false;
+    const response = await fetch('/smartserve/reloadcheck', {
+      signal: controller.signal
+    });
+
+    window.onbeforeunload = event => {
+      aborted = true;
+      controller.abort();
+    };
+
+    if (!aborted && await response.text() === 'reload') {
       logger.log('ok', 'triggering reload!');
       this.reload();
-    } else {
+    } else if (!aborted && !(await response.text() === 'end')) {
       this.start();
     }
   }
