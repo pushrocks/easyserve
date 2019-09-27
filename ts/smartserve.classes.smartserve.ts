@@ -98,11 +98,12 @@ export class SmartServe {
     if (this.options.watch) {
       await this.smartchokInstance.start();
       (await this.smartchokInstance.getObservableFor('change')).subscribe(async () => {
-        const serveDirHash = await plugins.smartfile.fs.fileTreeToHash(this.options.serveDir, '**/*');
-        this.serveDirHashSubject.next(serveDirHash);
+        await this.createServeDirHash();
         this.reload();
       });
     }
+
+    await this.createServeDirHash();
 
     if (!this.options.expressInstance) {
       await this.smartexpressInstance.start();
@@ -121,5 +122,11 @@ export class SmartServe {
     this.ended = true;
     await this.smartexpressInstance.stop();
     await this.smartchokInstance.stop();
+  }
+
+  public async createServeDirHash() {
+    const serveDirHash = await plugins.smartfile.fs.fileTreeToHash(this.options.serveDir, '**/*');
+    console.log('Current ServeDir hash: ' + serveDirHash);
+    this.serveDirHashSubject.next(serveDirHash);
   }
 }
