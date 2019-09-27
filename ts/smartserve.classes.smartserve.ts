@@ -17,6 +17,7 @@ export class SmartServe {
   public options: IEasyServerConstructorOptions;
   public smartexpressInstance: plugins.smartexpress.Server;
   public smartchokInstance: plugins.smartchok.Smartchok;
+  public serveDirHashSubject = new plugins.smartrx.rxjs.ReplaySubject(1);
 
   public lastReload: number = Date.now();
   public ended = false;
@@ -96,7 +97,9 @@ export class SmartServe {
     this.smartchokInstance = new plugins.smartchok.Smartchok([this.options.serveDir], {});
     if (this.options.watch) {
       await this.smartchokInstance.start();
-      (await this.smartchokInstance.getObservableFor('change')).subscribe(() => {
+      (await this.smartchokInstance.getObservableFor('change')).subscribe(async () => {
+        const serveDirHash = await plugins.smartfile.fs.fileTreeToHash(this.options.serveDir, '**/*');
+        this.serveDirHashSubject.next(serveDirHash);
         this.reload();
       });
     }
@@ -110,7 +113,7 @@ export class SmartServe {
   /**
    * reloads the page
    */
-  async reload() {
+  public async reload() {
     this.lastReload = Date.now();
   }
 
