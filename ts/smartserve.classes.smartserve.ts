@@ -17,7 +17,7 @@ export class SmartServe {
   public options: IEasyServerConstructorOptions;
   public smartexpressInstance: plugins.smartexpress.Server;
   public smartchokInstance: plugins.smartchok.Smartchok;
-  public serveDirHashSubject = new plugins.smartrx.rxjs.ReplaySubject(1);
+  public serveDirHashSubject = new plugins.smartrx.rxjs.ReplaySubject<string>(1);
 
   public lastReload: number = Date.now();
   public ended = false;
