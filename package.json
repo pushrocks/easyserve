@@ -36,7 +36,7 @@
   "dependencies": {
     "@pushrocks/smartchok": "^1.0.22",
     "@pushrocks/smartdelay": "^2.0.3",
-    "@pushrocks/smartexpress": "^3.0.40",
+    "@pushrocks/smartexpress": "^3.0.41",
     "@pushrocks/smartfile": "^7.0.5",
     "@pushrocks/smartlog": "^2.0.19",
     "@pushrocks/smartlog-destination-devtools": "^1.0.7",
