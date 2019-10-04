@@ -18,6 +18,7 @@ export class SmartServe {
   public smartexpressInstance: plugins.smartexpress.Server;
   public smartchokInstance: plugins.smartchok.Smartchok;
   public serveDirHashSubject = new plugins.smartrx.rxjs.ReplaySubject<string>(1);
+  public serveHash: string = '000000';
 
   public lastReload: number = Date.now();
   public ended = false;
@@ -76,9 +77,9 @@ export class SmartServe {
     this.smartexpressInstance.addRoute(
       '/*',
       new plugins.smartexpress.HandlerStatic(this.options.serveDir, {
-        responseModifier: async dataArg => {
-          let fileString = dataArg.responseContent;
-          if (plugins.path.parse(dataArg.path).ext === '.html') {
+        responseModifier: async responseArg => {
+          let fileString = responseArg.responseContent;
+          if (plugins.path.parse(responseArg.path).ext === '.html') {
             const fileStringArray = fileString.split('<head>');
             if (this.options.injectReload && fileStringArray.length === 2) {
               fileStringArray[0] = `${fileStringArray[0]}<head><script async defer src="/smartserve/devtools"></script>`;
@@ -87,7 +88,13 @@ export class SmartServe {
               console.log('Could not insert smartserve script');
             }
           }
-          return fileString;
+          const headers = responseArg.headers;
+          headers.appHash = this.serveHash;
+          return {
+            headers,
+            path: responseArg.path,
+            responseContent: fileString
+          };
         }
       })
     );
@@ -124,6 +131,7 @@ export class SmartServe {
 
   public async createServeDirHash() {
     const serveDirHash = await plugins.smartfile.fs.fileTreeToHash(this.options.serveDir, '**/*');
+    this.serveHash = serveDirHash;
     console.log('Current ServeDir hash: ' + serveDirHash);
     this.serveDirHashSubject.next(serveDirHash);
   }

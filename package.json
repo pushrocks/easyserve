@@ -23,12 +23,12 @@
     "url": "https://github.com/pushrocks/easyserve/issues"
   },
   "files": [
-    "ts/*",
-    "ts_web/*",
-    "dist/*",
-    "dist_web/*",
-    "dist_ts_web/*",
-    "assets/*",
+    "ts/**/*",
+    "ts_web/**/*",
+    "dist/**/*",
+    "dist_web/**/*",
+    "dist_ts_web/**/*",
+    "assets/**/*",
     "cli.js",
     "npmextra.json",
     "readme.md"
@@ -37,20 +37,20 @@
   "dependencies": {
     "@pushrocks/smartchok": "^1.0.23",
     "@pushrocks/smartdelay": "^2.0.3",
-    "@pushrocks/smartexpress": "^3.0.47",
+    "@pushrocks/smartexpress": "^3.0.49",
     "@pushrocks/smartfile": "^7.0.6",
     "@pushrocks/smartlog": "^2.0.19",
     "@pushrocks/smartlog-destination-devtools": "^1.0.7",
     "@pushrocks/smartopen": "^1.0.22",
-    "@pushrocks/smartpromise": "^3.0.5",
+    "@pushrocks/smartpromise": "^3.0.6",
     "@pushrocks/smartrx": "^2.0.5"
   },
   "devDependencies": {
     "@gitzone/tsbuild": "^2.1.17",
     "@gitzone/tsbundle": "^1.0.40",
-    "@gitzone/tstest": "^1.0.24",
+    "@gitzone/tstest": "^1.0.28",
     "@pushrocks/tapbundle": "^3.0.13",
-    "@types/node": "^12.7.8",
+    "@types/node": "^12.7.11",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0"
   },
