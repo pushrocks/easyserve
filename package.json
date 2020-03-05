@@ -37,7 +37,7 @@
   "dependencies": {
     "@pushrocks/smartchok": "^1.0.23",
     "@pushrocks/smartdelay": "^2.0.6",
-    "@pushrocks/smartexpress": "^3.0.60",
+    "@pushrocks/smartexpress": "^3.0.61",
     "@pushrocks/smartfile": "^7.0.9",
     "@pushrocks/smartlog": "^2.0.21",
     "@pushrocks/smartlog-destination-devtools": "^1.0.7",
@@ -49,9 +49,9 @@
     "@gitzone/tsbuild": "^2.1.17",
     "@gitzone/tsbundle": "^1.0.50",
     "@gitzone/tstest": "^1.0.28",
-    "@pushrocks/tapbundle": "^3.0.13",
-    "@types/node": "^12.7.11",
-    "tslint": "^5.20.0",
+    "@pushrocks/tapbundle": "^3.2.0",
+    "@types/node": "^13.7.7",
+    "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0"
   },
   "private": false
