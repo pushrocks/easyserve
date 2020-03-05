@@ -36,10 +36,10 @@
   "homepage": "https://github.com/pushrocks/easyserve",
   "dependencies": {
     "@pushrocks/smartchok": "^1.0.23",
-    "@pushrocks/smartdelay": "^2.0.3",
-    "@pushrocks/smartexpress": "^3.0.52",
-    "@pushrocks/smartfile": "^7.0.6",
-    "@pushrocks/smartlog": "^2.0.19",
+    "@pushrocks/smartdelay": "^2.0.6",
+    "@pushrocks/smartexpress": "^3.0.60",
+    "@pushrocks/smartfile": "^7.0.9",
+    "@pushrocks/smartlog": "^2.0.21",
     "@pushrocks/smartlog-destination-devtools": "^1.0.7",
     "@pushrocks/smartopen": "^1.0.22",
     "@pushrocks/smartpromise": "^3.0.6",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@gitzone/tsbuild": "^2.1.17",
-    "@gitzone/tsbundle": "^1.0.40",
+    "@gitzone/tsbundle": "^1.0.50",
     "@gitzone/tstest": "^1.0.28",
     "@pushrocks/tapbundle": "^3.0.13",
     "@types/node": "^12.7.11",
