@@ -95,7 +95,8 @@ export class SmartServe {
             path: responseArg.path,
             responseContent: fileString
           };
-        }
+        },
+        serveIndexHtmlDefault: true
       })
     );
 

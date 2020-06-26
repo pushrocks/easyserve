@@ -5,9 +5,8 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "npm run build && tstest test/ && npm run cleanBuild",
-    "build": "tsbuild && tsbundle",
-    "cleanBuild": "rm -r dist/"
+    "test": "tstest test/",
+    "build": "tsbuild --web"
   },
   "repository": {
     "type": "git",
@@ -36,22 +35,21 @@
   "homepage": "https://github.com/pushrocks/easyserve",
   "dependencies": {
     "@pushrocks/smartchok": "^1.0.23",
-    "@pushrocks/smartdelay": "^2.0.6",
-    "@pushrocks/smartexpress": "^3.0.61",
-    "@pushrocks/smartfile": "^7.0.9",
-    "@pushrocks/smartlog": "^2.0.21",
+    "@pushrocks/smartdelay": "^2.0.9",
+    "@pushrocks/smartexpress": "^3.0.72",
+    "@pushrocks/smartfile": "^7.0.12",
+    "@pushrocks/smartlog": "^2.0.35",
     "@pushrocks/smartlog-destination-devtools": "^1.0.7",
     "@pushrocks/smartopen": "^1.0.22",
     "@pushrocks/smartpromise": "^3.0.6",
-    "@pushrocks/smartrx": "^2.0.5"
+    "@pushrocks/smartrx": "^2.0.17"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.1.17",
-    "@gitzone/tsbundle": "^1.0.50",
-    "@gitzone/tstest": "^1.0.28",
-    "@pushrocks/tapbundle": "^3.2.0",
-    "@types/node": "^13.7.7",
-    "tslint": "^6.0.0",
+    "@gitzone/tsbuild": "^2.1.24",
+    "@gitzone/tstest": "^1.0.33",
+    "@pushrocks/tapbundle": "^3.2.1",
+    "@types/node": "^14.0.14",
+    "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0"
   },
   "private": false
