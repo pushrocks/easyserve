@@ -2,8 +2,8 @@
   "name": "@pushrocks/smartserve",
   "version": "1.1.40",
   "description": "easy serving of static files",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist_ts/index.js",
+  "typings": "dist_ts/index.d.ts",
   "scripts": {
     "test": "tstest test/",
     "build": "tsbuild --web"
@@ -25,7 +25,8 @@
     "ts/**/*",
     "ts_web/**/*",
     "dist/**/*",
-    "dist_web/**/*",
+    "dist_*/**/*",
+    "dist_ts/**/*",
     "dist_ts_web/**/*",
     "assets/**/*",
     "cli.js",

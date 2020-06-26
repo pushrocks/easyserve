@@ -27,11 +27,11 @@ export class SmartServe {
       injectReload: true,
       port: 3000,
       serveDir: process.cwd(),
-      watch: true
+      watch: true,
     };
     this.options = {
       ...standardOptions,
-      ...optionsArg
+      ...optionsArg,
     };
   }
 
@@ -45,7 +45,7 @@ export class SmartServe {
       new plugins.smartexpress.Server({
         port: this.options.port,
         forceSsl: false,
-        cors: true
+        cors: true,
       });
 
     // add routes to the smartexpress instance
@@ -77,7 +77,7 @@ export class SmartServe {
     this.smartexpressInstance.addRoute(
       '/*',
       new plugins.smartexpress.HandlerStatic(this.options.serveDir, {
-        responseModifier: async responseArg => {
+        responseModifier: async (responseArg) => {
           let fileString = responseArg.responseContent;
           if (plugins.path.parse(responseArg.path).ext === '.html') {
             const fileStringArray = fileString.split('<head>');
@@ -93,10 +93,10 @@ export class SmartServe {
           return {
             headers,
             path: responseArg.path,
-            responseContent: fileString
+            responseContent: fileString,
           };
         },
-        serveIndexHtmlDefault: true
+        serveIndexHtmlDefault: true,
       })
     );
 

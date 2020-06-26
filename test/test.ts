@@ -9,12 +9,12 @@ tap.test('should create a valid instance of SmartServe', async () => {
     injectReload: true,
     port: 3000,
     serveDir: path.join(__dirname),
-    watch: true
+    watch: true,
   });
   expect(testSmartServe).to.be.instanceOf(SmartServe);
 });
 
-tap.test('should start to serve files', async tools => {
+tap.test('should start to serve files', async (tools) => {
   await testSmartServe.start();
   await tools.delayFor(5000);
   testSmartServe.reload();
@@ -22,7 +22,7 @@ tap.test('should start to serve files', async tools => {
   testSmartServe.reload();
 });
 
-tap.test('should stop to serve files ', async tools => {
+tap.test('should stop to serve files ', async (tools) => {
   await tools.delayFor(1000);
   await testSmartServe.stop();
 });

@@ -3,6 +3,7 @@
     "npmAccessLevel": "public"
   },
   "gitzone": {
+    "projectType": "npm",
     "module": {
       "githost": "gitlab.com",
       "gitscope": "pushrocks",
